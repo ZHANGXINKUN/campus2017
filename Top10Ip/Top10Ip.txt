@@ -1,0 +1,13 @@
+考察cat、uniq、awk等命令的使用
+第一步：查看日志文件
+more /*/access log/*.log
+第二步：从日志文件中提取IP地址（数字1代表IP地址所在的列的序号）
+cat /*/access log/*.log | awk -F‘{printf$1}'
+第三步：统计IP地址出现的次数
+cat /*/access log/*.log | awk -F‘{printf$1}' | uniq -c
+第四步：按照IP出现的次数从大到小排序
+cat /*/access log/*.log | awk -F‘{printf$1}' | uniq -c | sort -r
+第五步：由于统计完的次数会位于第一列，所以再次提取IP
+cat /*/access log/*.log | awk -F‘{printf$1}' | uniq -c | sort -r | awk -F‘{printf$2}'
+第六步：取前十个IP地址
+cat /*/access log/*.log | awk -F‘{printf$1}' | uniq -c | sort -r | awk -F‘{printf$2}' | head - 10

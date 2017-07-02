@@ -1,0 +1,4 @@
+考察Linux中的远程拷贝命令scp
+命令如下：
+scp –r dir1 l-test.dev.cn1/tmp
+//其中-r表示将dir1目录下的所有子目录及文件全部拷贝
